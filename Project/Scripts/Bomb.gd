@@ -10,10 +10,15 @@ func start(pos, speed):
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		# TODO: Handle collisions
-		print("Collided with ", collision.collider.name)
+		if collision.collider.has_method("kill"):
+			collision.collider.kill()
+			queue_free()
 	pass
 
 # Destroys this bomb when not in view/camera render
 func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+	
+func explode():
+	# TODO: Handle explosion
 	queue_free()
