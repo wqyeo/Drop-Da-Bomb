@@ -1,25 +1,33 @@
 extends Node
 
+export (int) var speed:int = 200
+export (int) var max_left:int = 145
+export (int) var max_right:int = 1225
+export (int) var bomb_speed: int = 400
+export (int) var reload_duration :float = 2
 
-var speed:int = 200
-var max_left:int = 145
-var max_right:int = 1225
+var bomb_scene = preload("res://Scenes/BombScene.tscn")
 
 var moving_left:bool = true
 var y_position: int
+var reload_timer :float = 1
 
 func _ready():
 	y_position = self.position.y
 	pass
 
 func _process(delta):
-	if Input.is_action_just_released("drop_bomb"):
+	if reload_timer <= reload_duration:
+		reload_timer += delta
+		_process_hover(delta)
+	elif Input.is_action_just_released("drop_bomb"):
 		_drop_bomb()
 	elif !(Input.is_action_pressed("drop_bomb")):
 		_process_hover(delta)
 	pass
 	
 func _process_hover(delta):
+	# Move left/right based on the current toggle
 	var position = self.position
 	if moving_left:
 		position = position.move_toward(Vector2(max_left, y_position), delta * speed)
@@ -28,6 +36,7 @@ func _process_hover(delta):
 	
 	self.position = position
 	
+	# Toggle move direction if hit the move limit
 	if position.x <= max_left:
 		moving_left = false
 	elif position.x >= max_right:
@@ -35,6 +44,8 @@ func _process_hover(delta):
 	pass
 	
 func _drop_bomb():
-	# TODO: Drop the bomb
-	print("drop bomb")
+	var bomb = bomb_scene.instance()
+	bomb.start($BombSpawn.global_position, bomb_speed)
+	get_parent().add_child(bomb)
+	reload_timer = 0
 	pass
