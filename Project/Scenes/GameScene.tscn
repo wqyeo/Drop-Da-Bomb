@@ -95,8 +95,12 @@ __meta__ = {
 }
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2( 1231, 143 )
+position = Vector2( 1100, 143 )
 script = ExtResource( 2 )
+speed = 300
+max_left = 300
+max_right = 1100
+bomb_speed = 600
 
 [node name="BombSpawn" type="Position2D" parent="Player"]
 position = Vector2( 0, 31 )

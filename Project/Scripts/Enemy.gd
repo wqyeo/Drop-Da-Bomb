@@ -1,11 +1,23 @@
 extends KinematicBody2D
 
+enum { NONE, FRAG, TIME_EXTEND }
+
+var frag_icon = preload("res://Sprites/FragIcon.png")
+var time_extend_icon = preload("res://Sprites/TimeExtendIcon.png")
 
 var velocity = Vector2()
 
-func start(pos, speed):
+func start(pos, speed, power_up = NONE):
 	self.position = pos
 	velocity = Vector2(speed, 0)
+	if power_up == NONE:
+		$PowerUpIcon.visible = false
+		$BaseSprite.modulate = Color(1,1,1) 
+	elif power_up == FRAG:
+		$PowerUpIcon.texture = frag_icon
+	elif power_up == TIME_EXTEND:
+		
+		$PowerUpIcon.texture = time_extend_icon
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -21,5 +33,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 # Called by the exploding bomb
 func kill():
-	Global.curr_score += 1
+	GlobalScore.curr_score += 1
+	_trigger_power_up()
 	queue_free()
+	
+func _trigger_power_up():
+	pass

@@ -60,9 +60,18 @@ func _spawn_enemy():
 	var enemy = enemy_scene.instance()
 	random.randomize()
 	var enemy_speed = random.randi_range(min_enemy_speed, max_enemy_speed)
+	
+	var power_up_type = 0
+	if Math.abs(random.randfn()) < GlobalEnemy.power_up_spawn_chance:
+		GlobalEnemy.trigger_power_up_spawned()
+		random.randomize()
+		power_up_type = random.randi_range(1, 2)
+	else:
+		GlobalEnemy.trigger_no_power_up_spawned()
+	
 	# Make the enemy move in the correct direction based on where the spawner is.
 	if is_left_spawner:
-		enemy.start(self.global_position, enemy_speed)
+		enemy.start(self.global_position, enemy_speed, power_up_type)
 	else:
-		enemy.start(self.global_position, -enemy_speed)
+		enemy.start(self.global_position, -enemy_speed, power_up_type)
 	get_parent().add_child(enemy)
