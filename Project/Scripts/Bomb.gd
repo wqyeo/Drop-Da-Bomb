@@ -29,6 +29,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 func explode():
 	_kill_all_in_radius()
 	_spawn_exploding_particle()
+	if has_frag:
+		_spawn_frags()
 	queue_free()
 	
 func _kill_all_in_radius():
@@ -42,5 +44,11 @@ func _spawn_exploding_particle():
 	particle.global_position = position
 	
 func _spawn_frags():
-	# TODO: Actually spawn fragments
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	for i in range(5):
+		random.randomize()
+		var new_frag = fragment.instance()
+		new_frag.start(self.global_position, random.randi_range(-360, 360))
+		self.get_parent().add_child(new_frag)
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sprites/White128.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/ScoreText.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/Kenney Pixel Square.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scripts/BombStateText.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/FragmentStateText.gd" type="Script" id=8]
 
 [sub_resource type="Gradient" id=9]
 interpolation_mode = 2
@@ -89,6 +90,45 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "BlinkAnim"
+length = 0.5
+
+[sub_resource type="Animation" id=13]
+resource_name = "HideFrag"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FragmentStateLabel:percent_visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+
+[sub_resource type="Animation" id=12]
+resource_name = "ShowFrag"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FragmentStateLabel:percent_visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0 ]
+}
+
 [node name="World" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -121,12 +161,18 @@ texture = ExtResource( 1 )
 position = Vector2( 1496, 250 )
 script = ExtResource( 3 )
 min_Y = 300
+min_spawn_timer = 0.75
+max_spawn_timer = 2.25
+max_enemy_speed = 500
 is_left_spawner = false
 
 [node name="LeftEnemySpawner" type="Position2D" parent="."]
 position = Vector2( -58, 752 )
 script = ExtResource( 3 )
 min_Y = 300
+min_spawn_timer = 0.75
+max_spawn_timer = 2.25
+max_enemy_speed = 500
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 657, 376 )
@@ -182,6 +228,30 @@ valign = 1
 [node name="BombStatePlayer" type="AnimationPlayer" parent="BombStateText"]
 anims/BlinkAnim = SubResource( 7 )
 anims/RESET = SubResource( 8 )
+
+[node name="FragmentStateText" type="Node2D" parent="."]
+position = Vector2( 294, 787 )
+script = ExtResource( 8 )
+
+[node name="FragmentStateLabel" type="Label" parent="FragmentStateText"]
+anchor_bottom = 1.0
+margin_left = -238.0
+margin_top = -27.0
+margin_right = 247.0
+margin_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 0.396078, 0.396078, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "FRAGMENT"
+align = 1
+valign = 1
+
+[node name="FragmentStateAnim" type="AnimationPlayer" parent="FragmentStateText"]
+anims/BlinkAnim = SubResource( 10 )
+anims/HideFrag = SubResource( 13 )
+anims/RESET = SubResource( 11 )
+anims/ShowFrag = SubResource( 12 )
 
 [connection signal="bomb_hold" from="Player" to="BombStateText" method="_on_Player_bomb_hold"]
 [connection signal="bomb_launched" from="Player" to="BombStateText" method="_on_Player_bomb_launched"]

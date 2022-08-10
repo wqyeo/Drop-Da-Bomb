@@ -65,7 +65,7 @@ func _process_hover(delta):
 	
 func _drop_bomb():
 	var bomb = bomb_scene.instance()
-	bomb.start($BombSpawn.global_position, bomb_speed)
+	bomb.start($BombSpawn.global_position, bomb_speed, GlobalPlayer.frag_active)
 	get_parent().add_child(bomb)
 	reload_timer = 0
 	pass

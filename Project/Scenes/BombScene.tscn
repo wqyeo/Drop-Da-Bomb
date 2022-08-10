@@ -61,6 +61,7 @@ shape = SubResource( 4 )
 visible = false
 modulate = Color( 0.00784314, 0.0823529, 0.105882, 1 )
 scale = Vector2( 0.2, 0.2 )
+z_index = 1
 texture = ExtResource( 3 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

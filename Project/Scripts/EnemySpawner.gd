@@ -9,8 +9,8 @@ export (int) var min_speed = 1000
 export (float) var min_spawn_timer:float = 1
 export (float) var max_spawn_timer:float = 3
 
-export (int) var max_enemy_speed = 100
-export (int) var min_enemy_speed = 600
+export (int) var min_enemy_speed = 100
+export (int) var max_enemy_speed = 600
 
 export (bool) var is_left_spawner = true
 
