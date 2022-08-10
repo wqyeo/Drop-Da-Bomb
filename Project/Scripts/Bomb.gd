@@ -12,7 +12,6 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.collider.has_method("kill"):
-			collision.collider.kill()
 			explode()
 	pass
 
@@ -21,7 +20,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	
 func explode():
-	# TODO: Handle explosion
+	for body in $Area2D.get_overlapping_bodies():
+		if body.has_method("kill"):
+			body.kill()
+
 	var particle = explosionParticle.instance()
 	get_parent().add_child(particle)
 	particle.global_position = position

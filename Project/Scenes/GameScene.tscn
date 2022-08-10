@@ -18,7 +18,7 @@ __meta__ = {
 }
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2( 1225, 50 )
+position = Vector2( 1231, 143 )
 script = ExtResource( 2 )
 
 [node name="BombSpawn" type="Position2D" parent="Player"]
@@ -30,13 +30,15 @@ scale = Vector2( 1.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="RightEnemySpawner" type="Position2D" parent="."]
-position = Vector2( 1449, 713 )
+position = Vector2( 1496, 250 )
 script = ExtResource( 3 )
+min_Y = 300
 is_left_spawner = false
 
 [node name="LeftEnemySpawner" type="Position2D" parent="."]
 position = Vector2( -58, 752 )
 script = ExtResource( 3 )
+min_Y = 300
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 657, 376 )
