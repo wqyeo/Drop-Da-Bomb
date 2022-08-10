@@ -6,6 +6,10 @@ export (int) var max_right:int = 1225
 export (int) var bomb_speed: int = 400
 export (int) var reload_duration :float = 2
 
+signal bomb_ready
+signal bomb_hold
+signal bomb_launched
+
 var bomb_scene = preload("res://Scenes/BombScene.tscn")
 
 var moving_left:bool = true
@@ -18,14 +22,30 @@ func _ready():
 
 func _process(delta):
 	if reload_timer <= reload_duration:
-		reload_timer += delta
-		_process_hover(delta)
-	elif Input.is_action_just_released("drop_bomb"):
-		_drop_bomb()
-	elif !(Input.is_action_pressed("drop_bomb")):
-		_process_hover(delta)
+		_wait_for_reload(delta)
+	else:
+		_process_bombing_inputs(delta)
 	pass
+
+func _wait_for_reload(delta):
+	reload_timer += delta
+	_process_hover(delta)
+	if reload_timer >= reload_duration:
+		emit_signal("bomb_ready")
 	
+func _process_bombing_inputs(delta):
+	# Button was let go, drop bomb
+	if Input.is_action_just_released("drop_bomb"):
+		emit_signal("bomb_launched")
+		$BombSpawn/LaserSight.visible = false
+		_drop_bomb()
+	# Button is held down, aim
+	elif Input.is_action_pressed("drop_bomb"):
+		$BombSpawn/LaserSight.visible = true
+		emit_signal("bomb_hold")
+	else:
+		_process_hover(delta)
+
 func _process_hover(delta):
 	# Move left/right based on the current toggle
 	var position = self.position
