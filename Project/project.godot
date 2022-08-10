@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 GlobalScore="*res://Scripts/Globals/GlobalScore.gd"
 GlobalEnemy="*res://Scripts/Globals/GlobalEnemy.gd"
 Math="*res://Scripts/Globals/Math.gd"
+GlobalPlayer="*res://Scripts/Globals/GlobalPlayer.gd"
 
 [display]
 

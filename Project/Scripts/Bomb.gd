@@ -3,10 +3,17 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var explosionParticle = preload("res://Scenes/BombExplodeParticle.tscn")
+var fragment = preload("res://Scenes/FragmentScene.tscn")
 
-func start(pos, speed):
+var has_frag: bool
+
+func start(pos, speed, frag = false):
 	self.position = pos
 	velocity = Vector2(0, speed)
+	
+	has_frag = frag
+	if has_frag:
+		$FragIcon.visible = true
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -33,3 +40,7 @@ func _spawn_exploding_particle():
 	var particle = explosionParticle.instance()
 	get_parent().add_child(particle)
 	particle.global_position = position
+	
+func _spawn_frags():
+	# TODO: Actually spawn fragments
+	pass
