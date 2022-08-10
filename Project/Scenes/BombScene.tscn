@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/White128.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bomb.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 32 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 4.75924, 0, 0, Vector2( 0.509901, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.486034, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.839216 )
 
 [node name="Bomb" type="KinematicBody2D"]
 collision_layer = 2
@@ -23,5 +30,21 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+rotation = -1.5708
+amount = 30
+local_coords = false
+texture = ExtResource( 1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 70.0
+angular_velocity = 20.0
+angular_velocity_random = 1.0
+radial_accel = 20.0
+radial_accel_random = 0.5
+scale_amount = 0.1
+scale_amount_random = 0.1
+scale_amount_curve = SubResource( 2 )
+color_initial_ramp = SubResource( 3 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

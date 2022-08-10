@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 
 var velocity = Vector2()
+var explosionParticle = preload("res://Scenes/BombExplodeParticle.tscn")
 
 func start(pos, speed):
 	self.position = pos
@@ -12,7 +13,7 @@ func _physics_process(delta):
 	if collision:
 		if collision.collider.has_method("kill"):
 			collision.collider.kill()
-			queue_free()
+			explode()
 	pass
 
 # Destroys this bomb when not in view/camera render
@@ -21,4 +22,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	
 func explode():
 	# TODO: Handle explosion
+	var particle = explosionParticle.instance()
+	get_parent().add_child(particle)
+	particle.global_position = position
 	queue_free()
