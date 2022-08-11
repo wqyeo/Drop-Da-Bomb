@@ -1,0 +1,281 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Fonts/Kenney Pixel Square.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/Circle128.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Menu.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/TimeExtendIcon.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/FragIcon.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Arrow.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 2.79827, 0, 0, Vector2( 0.485149, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.00836, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.480447, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ArrowIcon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ArrowIcon2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ArrowIcon3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ArrowIcon4:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "StartBlink"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 2.99999 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ArrowIcon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ArrowIcon2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ArrowIcon3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ArrowIcon4:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 100
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="TitleText" type="Node2D" parent="."]
+
+[node name="TitleLabel" type="Label" parent="TitleText"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 88.0
+margin_top = 56.0
+margin_right = 938.0
+margin_bottom = 206.0
+custom_fonts/font = SubResource( 4 )
+text = "DROP DA BOMB!"
+align = 1
+valign = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 657, 375 )
+amount = 70
+speed_scale = 0.5
+randomness = 1.0
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 600 )
+gravity = Vector2( 0, 30 )
+scale_amount = 0.07
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.980392, 0.984314, 0.913725, 1 )
+color_initial_ramp = SubResource( 3 )
+hue_variation = 0.01
+hue_variation_random = 0.05
+anim_speed = 1.0
+
+[node name="StartText" type="Node2D" parent="."]
+position = Vector2( 32.5, 623 )
+
+[node name="StartLabel" type="Label" parent="StartText"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 1301.0
+margin_bottom = 150.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PRESS SPACE TO DROP!"
+align = 1
+valign = 1
+
+[node name="ArrowIcon" type="Sprite" parent="StartText"]
+position = Vector2( 64.5, 75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="ArrowIcon2" type="Sprite" parent="StartText"]
+position = Vector2( 231.5, 75.0001 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="ArrowIcon3" type="Sprite" parent="StartText"]
+position = Vector2( 1076.5, 75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="ArrowIcon4" type="Sprite" parent="StartText"]
+position = Vector2( 1229.5, 75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartText"]
+root_node = NodePath("../StartLabel")
+autoplay = "StartBlink"
+anims/RESET = SubResource( 6 )
+anims/StartBlink = SubResource( 7 )
+
+[node name="TimeText" type="Node2D" parent="."]
+position = Vector2( 129, 327.2 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="TimeExtendIcon" type="Sprite" parent="TimeText"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
+[node name="TimeLabel" type="Label" parent="TimeText/TimeExtendIcon"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 41.0
+margin_top = -102.0
+margin_right = 396.0
+margin_bottom = -26.0
+custom_fonts/font = SubResource( 5 )
+text = "60 SECONDS"
+align = 1
+valign = 1
+
+[node name="EnemyText" type="Node2D" parent="."]
+position = Vector2( 137, 490.2 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="FragIcon" type="Sprite" parent="EnemyText"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 6 )
+
+[node name="TimeLabel" type="Label" parent="EnemyText/FragIcon"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 41.0
+margin_top = -102.0
+margin_right = 656.0
+margin_bottom = -26.0
+rect_scale = Vector2( 1.1, 1.1 )
+custom_fonts/font = SubResource( 5 )
+text = "DESTORY THE ENEMY!"
+align = 1
+valign = 1
