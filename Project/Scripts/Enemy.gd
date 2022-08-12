@@ -4,6 +4,7 @@ enum { NONE, FRAG, TIME_EXTEND }
 
 var frag_icon = preload("res://Sprites/FragIcon.png")
 var time_extend_icon = preload("res://Sprites/TimeExtendIcon.png")
+var enemyIcon = preload("res://Sprites/Enemy.png")
 
 var holding_power_up: int
 var velocity = Vector2()
@@ -15,6 +16,9 @@ func start(pos, speed, power_up = NONE):
 	if power_up == NONE:
 		$PowerUpIcon.visible = false
 		$BaseSprite.modulate = Color(1,1,1) 
+		$BaseSprite.texture = enemyIcon
+		$BaseSprite.scale = Vector2(.7, .7)
+		$CollisionShape2D.scale = Vector2(1.5,4)
 	elif power_up == FRAG:
 		$PowerUpIcon.texture = frag_icon
 	elif power_up == TIME_EXTEND:

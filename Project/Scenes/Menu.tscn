@@ -335,7 +335,7 @@ margin_top = -102.0
 margin_right = 396.0
 margin_bottom = -26.0
 custom_fonts/font = SubResource( 5 )
-text = "60 SECONDS"
+text = "20 SECONDS"
 align = 1
 valign = 1
 

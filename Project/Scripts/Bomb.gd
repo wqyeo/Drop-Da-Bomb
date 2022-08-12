@@ -28,6 +28,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	
 func explode():
+	MusicController.play_Explosion()
 	_kill_all_in_radius()
 	_spawn_exploding_particle()
 	if has_frag:

@@ -7,6 +7,7 @@ func _process(delta):
 		return
 		
 	if Input.is_key_pressed(KEY_SPACE):
+		MusicController.play_UISelect()
 		$AnimationPlayer.play("BlinkTransition")
 		enabled = false
 
