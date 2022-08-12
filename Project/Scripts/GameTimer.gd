@@ -1,6 +1,6 @@
 extends Node
 
-var curr_time:float = 20
+var curr_time:float = 60
 
 signal time_up
 

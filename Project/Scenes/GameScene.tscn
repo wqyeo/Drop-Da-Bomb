@@ -11,105 +11,6 @@
 [ext_resource path="res://Scripts/GameTimer.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/GameOverMenu.gd" type="Script" id=10]
 
-[sub_resource type="DynamicFont" id=3]
-size = 40
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=17]
-size = 50
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=16]
-size = 80
-font_data = ExtResource( 6 )
-
-[sub_resource type="Animation" id=20]
-resource_name = "BlinkTransition"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("Exit:percent_visible")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "move_to_main_menu"
-} ]
-}
-
-[sub_resource type="Animation" id=19]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Exit:percent_visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
-[sub_resource type="Animation" id=18]
-resource_name = "ShowGameOverMenu"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "enable"
-} ]
-}
-
 [sub_resource type="Gradient" id=9]
 interpolation_mode = 2
 colors = PoolColorArray( 0.890196, 0.0196078, 0.0196078, 0.0235294, 0.729412, 0.0313726, 0.0313726, 0.580392 )
@@ -155,6 +56,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 40 ]
 }
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Pop"
@@ -261,56 +166,105 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0 ]
 }
 
+[sub_resource type="DynamicFont" id=17]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 80
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=20]
+resource_name = "BlinkTransition"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Exit:percent_visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "move_to_main_menu"
+} ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Exit:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "ShowGameOverMenu"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "enable"
+} ]
+}
+
 [node name="World" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
-
-[node name="GameOverMenu" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_right = 1366.0
-margin_bottom = 820.0
-script = ExtResource( 10 )
-
-[node name="Panel" type="Panel" parent="GameOverMenu"]
-modulate = Color( 1, 1, 1, 0.607843 )
-margin_right = 1366.0
-margin_bottom = 820.0
-
-[node name="Exit" type="Label" parent="GameOverMenu"]
-margin_top = 527.0
-margin_right = 1366.0
-margin_bottom = 820.0
-custom_fonts/font = SubResource( 3 )
-text = "Press space to exit"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="ScoreLabel" type="Label" parent="GameOverMenu"]
-margin_left = -1.0
-margin_top = 258.0
-margin_right = 1365.0
-margin_bottom = 578.0
-custom_fonts/font = SubResource( 17 )
-text = "NEW HIGH SCORE: 100"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="GameOverLabel" type="Label" parent="GameOverMenu"]
-margin_right = 1366.0
-margin_bottom = 320.0
-custom_fonts/font = SubResource( 16 )
-text = "Game OVER"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverMenu"]
-anims/BlinkTransition = SubResource( 20 )
-anims/RESET = SubResource( 19 )
-anims/ShowGameOverMenu = SubResource( 18 )
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 1100, 143 )
@@ -450,6 +404,52 @@ anims/BlinkAnim = SubResource( 10 )
 anims/HideFrag = SubResource( 13 )
 anims/RESET = SubResource( 11 )
 anims/ShowFrag = SubResource( 12 )
+
+[node name="GameOverMenu" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1366.0
+margin_bottom = 820.0
+script = ExtResource( 10 )
+
+[node name="Panel" type="Panel" parent="GameOverMenu"]
+modulate = Color( 1, 1, 1, 0.607843 )
+margin_right = 1366.0
+margin_bottom = 820.0
+
+[node name="Exit" type="Label" parent="GameOverMenu"]
+margin_top = 527.0
+margin_right = 1366.0
+margin_bottom = 820.0
+custom_fonts/font = SubResource( 3 )
+text = "Press space to exit"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="GameOverMenu"]
+margin_left = -1.0
+margin_top = 258.0
+margin_right = 1365.0
+margin_bottom = 578.0
+custom_fonts/font = SubResource( 17 )
+text = "NEW HIGH SCORE: 100"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="GameOverLabel" type="Label" parent="GameOverMenu"]
+margin_right = 1366.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 16 )
+text = "Game OVER"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverMenu"]
+anims/BlinkTransition = SubResource( 20 )
+anims/RESET = SubResource( 19 )
+anims/ShowGameOverMenu = SubResource( 18 )
 
 [connection signal="bomb_hold" from="Player" to="BombStateText" method="_on_Player_bomb_hold"]
 [connection signal="bomb_launched" from="Player" to="BombStateText" method="_on_Player_bomb_launched"]

@@ -12,6 +12,7 @@ func _process(delta):
 		enabled = false
 
 func enable():
+	raise()
 	enabled = true
 	
 func move_to_main_menu():

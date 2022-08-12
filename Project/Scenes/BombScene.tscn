@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/White128.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bomb.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/FragIcon.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 32 )
@@ -55,5 +56,12 @@ color_initial_ramp = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 4 )
+
+[node name="FragIcon" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.00784314, 0.0823529, 0.105882, 1 )
+scale = Vector2( 0.25, 0.234375 )
+z_index = 1
+texture = ExtResource( 3 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

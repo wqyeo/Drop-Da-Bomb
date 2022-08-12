@@ -2,10 +2,6 @@ extends KinematicBody2D
 
 enum { NONE, FRAG, TIME_EXTEND }
 
-var frag_icon = preload("res://Sprites/FragIcon.png")
-var time_extend_icon = preload("res://Sprites/TimeExtendIcon.png")
-var enemyIcon = preload("res://Sprites/Enemy.png")
-
 var holding_power_up: int
 var velocity = Vector2()
 
@@ -14,15 +10,11 @@ func start(pos, speed, power_up = NONE):
 	velocity = Vector2(speed, 0)
 	holding_power_up = power_up
 	if power_up == NONE:
-		$PowerUpIcon.visible = false
 		$BaseSprite.modulate = Color(1,1,1) 
-		$BaseSprite.texture = enemyIcon
-		$BaseSprite.scale = Vector2(.7, .7)
-		$CollisionShape2D.scale = Vector2(1.5,4)
 	elif power_up == FRAG:
-		$PowerUpIcon.texture = frag_icon
+		$BaseSprite.modulate = Color(1, 0.46, 0.37)
 	elif power_up == TIME_EXTEND:
-		$PowerUpIcon.texture = time_extend_icon
+		$BaseSprite.modulate = Color(1,1,0.47)
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
