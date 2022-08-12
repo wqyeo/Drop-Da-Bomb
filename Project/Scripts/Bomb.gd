@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const frag_angles = [45, 90, 135, 180, 225, 270]
 
 var velocity = Vector2()
 var explosionParticle = preload("res://Scenes/BombExplodeParticle.tscn")
@@ -46,9 +47,9 @@ func _spawn_exploding_particle():
 func _spawn_frags():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	for i in range(5):
+	for i in range(frag_angles.size()):
 		random.randomize()
 		var new_frag = fragment.instance()
-		new_frag.start(self.global_position, random.randi_range(-360, 360))
+		new_frag.start(self.global_position, frag_angles[i])
 		self.get_parent().add_child(new_frag)
 	pass

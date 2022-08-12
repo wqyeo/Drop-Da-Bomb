@@ -8,4 +8,6 @@ func trigger_no_power_up_spawned():
 	
 func trigger_power_up_spawned():
 	power_up_spawn_chance = 0
-	  
+	 
+func trigger_new_game():
+	power_up_spawn_chance = 0

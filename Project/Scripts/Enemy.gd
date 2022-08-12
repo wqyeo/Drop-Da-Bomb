@@ -34,11 +34,14 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 # Called by the exploding bomb
 func kill():
-	GlobalScore.curr_score += 1
-	_trigger_power_up()
+	if !GlobalPlayer.game_over:
+		GlobalScore.curr_score += 1
+		_trigger_power_up()
 	queue_free()
 	
 func _trigger_power_up():
 	if holding_power_up == FRAG:
 		GlobalPlayer.activate_frag()
+	elif holding_power_up == TIME_EXTEND:
+		GlobalPlayer.timer_to_add += 5
 	pass

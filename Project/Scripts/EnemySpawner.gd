@@ -26,10 +26,14 @@ var x_position:int
 var random = RandomNumberGenerator.new()
 
 func _ready():
+	GlobalEnemy.trigger_new_game()
 	x_position = self.position.x
 	pass
 
 func _process(delta):
+	if GlobalPlayer.game_over:
+		return
+
 	_process_movement(delta)
 	
 	spawn_timer += delta

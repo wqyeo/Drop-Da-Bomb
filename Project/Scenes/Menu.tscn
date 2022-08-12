@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Fonts/Kenney Pixel Square.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/Circle128.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Menu.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Sprites/TimeExtendIcon.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/FragIcon.png" type="Texture" id=6]
@@ -22,6 +22,84 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "BlinkTransition"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ArrowIcon:self_modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ArrowIcon2:self_modulate")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ArrowIcon3:self_modulate")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ArrowIcon4:self_modulate")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "to_game_scene"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -87,7 +165,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "StartBlink"
+resource_name = "BlinkTransition"
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -97,7 +175,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.6, 2.99999 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -109,7 +187,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.6, 3 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -121,7 +199,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.6, 3 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -133,7 +211,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.6, 3 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -145,7 +223,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1.6, 3 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -154,6 +232,10 @@ tracks/4/keys = {
 [sub_resource type="DynamicFont" id=5]
 size = 100
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 80
+font_data = ExtResource( 1 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -194,7 +276,7 @@ hue_variation_random = 0.05
 anim_speed = 1.0
 
 [node name="StartText" type="Node2D" parent="."]
-position = Vector2( 32.5, 623 )
+position = Vector2( 34, 682 )
 
 [node name="StartLabel" type="Label" parent="StartText"]
 anchor_left = 0.5
@@ -232,6 +314,7 @@ texture = ExtResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartText"]
 root_node = NodePath("../StartLabel")
 autoplay = "StartBlink"
+anims/BlinkTransition = SubResource( 8 )
 anims/RESET = SubResource( 6 )
 anims/StartBlink = SubResource( 7 )
 
@@ -240,7 +323,6 @@ position = Vector2( 129, 327.2 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="TimeExtendIcon" type="Sprite" parent="TimeText"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 
 [node name="TimeLabel" type="Label" parent="TimeText/TimeExtendIcon"]
@@ -262,7 +344,6 @@ position = Vector2( 137, 490.2 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="FragIcon" type="Sprite" parent="EnemyText"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 
 [node name="TimeLabel" type="Label" parent="EnemyText/FragIcon"]
@@ -279,3 +360,14 @@ custom_fonts/font = SubResource( 5 )
 text = "DESTORY THE ENEMY!"
 align = 1
 valign = 1
+
+[node name="HighScoreLabel" type="Label" parent="."]
+margin_top = 570.0
+margin_right = 1366.0
+margin_bottom = 690.0
+custom_fonts/font = SubResource( 9 )
+text = "High score: 0"
+align = 1
+valign = 1
+
+[connection signal="animation_finished" from="StartText/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

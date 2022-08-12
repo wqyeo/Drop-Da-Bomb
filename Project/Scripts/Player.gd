@@ -17,10 +17,15 @@ var y_position: int
 var reload_timer :float = 1
 
 func _ready():
+	GlobalPlayer.trigger_new_game()
 	y_position = self.position.y
 	pass
 
 func _process(delta):
+	if GlobalPlayer.game_over:
+		_process_hover(delta)
+		return
+	
 	if reload_timer <= reload_duration:
 		_wait_for_reload(delta)
 	else:
